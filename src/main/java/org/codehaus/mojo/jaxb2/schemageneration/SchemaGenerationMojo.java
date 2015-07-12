@@ -93,7 +93,8 @@ public class SchemaGenerationMojo extends AbstractXsdGeneratorMojo {
      * </code>
      * </pre>
      * <p><strong>Note</strong>: if configured, the sources parameters replace the default
-     * value, which is the single directory {@code getProject().getCompileSourceRoots()}.</p>
+     * value, which is a List containing the paths to the directories defined by
+     * {@code getProject().getCompileSourceRoots()}.</p>
      *
      * @since 2.0
      */
@@ -190,13 +191,6 @@ public class SchemaGenerationMojo extends AbstractXsdGeneratorMojo {
      */
     @Override
     protected List<URL> getSources() {
-
-        /*
-        // TODO: Add source-classified Artifacts in classpath?
-        for(Artifact current : (Set<Artifact>) getProject().getDependencyArtifacts()) {
-            final ArtifactRepository repository = current.getRepository();
-        }
-        */
 
         final List<Filter<File>> sourceExcludes = schemaSourceExcludeFilters == null
                 ? STANDARD_SOURCE_EXCLUDE_FILTERS
