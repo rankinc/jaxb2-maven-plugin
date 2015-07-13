@@ -22,11 +22,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.codehaus.mojo.jaxb2.its</groupId>
-    <artifactId>mjaxb-33</artifactId>
+    <parent>
+        <groupId>org.codehaus.mojo.jaxb2.its</groupId>
+        <artifactId>schemagen-multimodule-project</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>second</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <description>Purpose: Test of extra arguments configuration containing spaces.</description>
+    <description>Purpose: Validate that XSDs are generated properly in multi-module projects.</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,22 +52,16 @@
             </plugins>
         </pluginManagement>
         <plugins>
+
+            <!--
+                This invocation fully uses the pluginManagement configuration from the parent project.
+            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
                 <version>@project.version@</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <!--
-                    No configuration is required; plugin defaults are used.
-                -->
             </plugin>
+
         </plugins>
     </build>
 </project>
